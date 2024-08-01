@@ -1,0 +1,18 @@
+{
+  "plugins": ["simple-import-sort", "solid", "@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:solid/typescript",
+    "prettier"
+  ],
+  "rules": {
+    "simple-import-sort/imports": "error"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": "latest"
+  },
+  "root": true
+}
