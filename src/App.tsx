@@ -1,9 +1,12 @@
+import createRAF, { targetFPS } from '@solid-primitives/raf'
+import { createScrollPosition } from '@solid-primitives/scroll'
 import { Clock, User } from 'lucide-solid'
-import { type Component, For } from 'solid-js'
+import { type Component, createEffect, For, onMount } from 'solid-js'
 
 import data from './assets/timings.json'
 import { Card } from './components/Card'
-import { useScrollingVideo } from './hooks/useScrollingVideo'
+import { useVideoScroll } from './hooks/useVideoScroll'
+import { clamp } from './utils/clamp'
 import { getRelativeTimeString } from './utils/getRelativeTimeString'
 
 const creationDatetime = new Date('2024-07-31T08:00')
@@ -12,12 +15,18 @@ export const App: Component = () => {
   let containerRef!: HTMLDivElement
   let videoRef!: HTMLVideoElement
 
-  useScrollingVideo(() => videoRef)
+  const playbackConst = 25 as const
 
   const handleLoadedMetadata = () => {
     // Depende do tamanho do vídeo
-    containerRef!.style.height = `${videoRef.duration * 25}svh` // 50svh para cada segundo
+    containerRef!.style.height = `${
+      Math.floor(videoRef.duration) * playbackConst
+    }svh` //  para cada segundo
   }
+
+  onMount(() => {
+    useVideoScroll(videoRef)
+  })
 
   return (
     <main class="max-w-full width-full bg-stone-50">
