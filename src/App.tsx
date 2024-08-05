@@ -14,7 +14,7 @@ export const App: Component = () => {
 
   const handleLoadedMetadata = () => {
     // Depende do tamanho do vídeo
-    containerRef!.style.height = `${Math.floor(videoRef.duration) * 25}svh` //  para cada segundo
+    containerRef!.style.height = `${Math.floor(videoRef.duration) * 200}px` //  para cada segundo
   }
 
   onMount(() => {
@@ -26,7 +26,7 @@ export const App: Component = () => {
       <article class="px-4">
         <header class="bg-stone-50 w-full min-h-[55svh]">
           <div class="max-w-screen-xl mx-auto px-8 py-32">
-            <h1 class="text-6xl font-bold text-stone-800 mb-4">
+            <h1 class="text-4xl sm:text-6xl font-bold text-stone-800 mb-4 ">
               Scrollytelling Demo
             </h1>
 
@@ -85,7 +85,7 @@ export const App: Component = () => {
             {({ timestamp, text, title }) => (
               <Card.Root
                 class="absolute even:left-3 odd:right-3 md:odd:right-6 md:even:left-6"
-                style={{ top: `${timestamp * 25}svh` }}
+                style={{ top: `${Math.floor(timestamp * 200)}px` }}
               >
                 {title && <Card.Title>{title}</Card.Title>}
                 <Card.Text>{text}</Card.Text>
