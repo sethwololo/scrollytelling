@@ -20,7 +20,7 @@ export const useVideoScroll = (videoRef: HTMLVideoElement) => {
         ).toFixed(2),
       )
 
-      videoRef.currentTime = progressInSeconds
+      videoRef.currentTime = progressInSeconds || 0
     }, 30),
   )
 

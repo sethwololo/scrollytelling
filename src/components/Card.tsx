@@ -7,7 +7,7 @@ const Root: Component<JSX.HTMLAttributes<HTMLDivElement>> = (props) => {
     <div
       {...props}
       class={cn(
-        'px-4 max-w-[320px] py-8 bg-stone-50 rounded-2xl',
+        'px-4 max-w-[320px] py-4 bg-stone-100 rounded-3xl',
         props.class || '',
       )}
     >
@@ -21,7 +21,7 @@ const Text: Component<JSX.HTMLAttributes<HTMLParagraphElement>> = (props) => {
     <p
       {...props}
       class={cn(
-        'text-lg max-w-prose leading-relaxed text-stone-800',
+        'text-md max-w-prose leading-normal text-stone-700',
         ...(props.class || ''),
       )}
     >
@@ -30,4 +30,18 @@ const Text: Component<JSX.HTMLAttributes<HTMLParagraphElement>> = (props) => {
   )
 }
 
-export const Card = { Root, Text }
+const Title: Component<JSX.HTMLAttributes<HTMLHeadingElement>> = (props) => {
+  return (
+    <h2
+      {...props}
+      class={cn(
+        'text-2xl font-bold leading-relaxed text-stone-700',
+        ...(props.class || ''),
+      )}
+    >
+      {props.children}
+    </h2>
+  )
+}
+
+export const Card = { Root, Text, Title }
