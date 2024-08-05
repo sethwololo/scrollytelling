@@ -84,7 +84,7 @@ export const App: Component = () => {
           <For each={data}>
             {({ timestamp, text, title }) => (
               <Card.Root
-                class="absolute even:left-3 odd:right-3 md:odd:right-6 md:even:left-6"
+                class="absolute even:left-3 even:mr-3 odd:right-3 odd:ml-3 md:odd:right-6 md:even:left-6 "
                 style={{ top: `${Math.floor(timestamp * 200)}px` }}
               >
                 {title && <Card.Title>{title}</Card.Title>}
