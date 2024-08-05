@@ -7,7 +7,7 @@ const Root: Component<JSX.HTMLAttributes<HTMLDivElement>> = (props) => {
     <div
       {...props}
       class={cn(
-        'px-4 max-w-[320px] py-4 bg-stone-50/85 backdrop-blur-sm rounded-3xl',
+        'px-4 max-w-[320px] py-4 bg-neutral-700/85 backdrop-blur-sm rounded-3xl',
         props.class || '',
       )}
     >
@@ -21,7 +21,7 @@ const Text: Component<JSX.HTMLAttributes<HTMLParagraphElement>> = (props) => {
     <p
       {...props}
       class={cn(
-        'text-md max-w-prose leading-normal text-stone-800',
+        'text-md max-w-prose leading-normal text-stone-50',
         ...(props.class || ''),
       )}
     >
@@ -35,7 +35,7 @@ const Title: Component<JSX.HTMLAttributes<HTMLHeadingElement>> = (props) => {
     <h2
       {...props}
       class={cn(
-        'text-2xl font-bold leading-relaxed text-stone-800',
+        'text-2xl  font-bold leading-relaxed text-stone-50',
         ...(props.class || ''),
       )}
     >
