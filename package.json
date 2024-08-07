@@ -34,6 +34,7 @@
     "@solid-primitives/event-listener": "^2.3.3",
     "@solid-primitives/raf": "^2.2.0",
     "clsx": "^2.1.1",
+    "lenis": "^1.1.9",
     "lucide-solid": "^0.418.0",
     "solid-js": "^1.8.11",
     "tailwind-merge": "^2.4.0"
