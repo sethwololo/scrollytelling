@@ -47,6 +47,17 @@ export const useVideoScroll = (videoRef: HTMLVideoElement) => {
     setIsScrolling(false)
   })
 
-  onMount(() => observer.observe(videoRef))
+  onMount(() => {
+    observer.observe(videoRef)
+
+    videoRef.preload = 'auto'
+    videoRef.muted = true
+    videoRef.disablePictureInPicture = true
+    videoRef.disableRemotePlayback = true
+    videoRef.controls = false
+    // videoRef.play()
+    videoRef.pause()
+    videoRef.load()
+  })
   onCleanup(() => observer.unobserve(videoRef))
 }

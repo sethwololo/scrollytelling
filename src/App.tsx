@@ -1,3 +1,4 @@
+import { makeEventListener } from '@solid-primitives/event-listener'
 import { Clock, User } from 'lucide-solid'
 import { type Component, For, onMount } from 'solid-js'
 
@@ -12,13 +13,13 @@ export const App: Component = () => {
   let containerRef!: HTMLDivElement
   let videoRef!: HTMLVideoElement
 
-  const handleLoadedMetadata = () => {
-    // Depende do tamanho do vídeo
-    containerRef!.style.height = `${Math.floor(videoRef.duration) * 200}px` //  para cada segundo
-  }
-
   onMount(() => {
     useVideoScroll(videoRef)
+
+    makeEventListener(videoRef, 'loadedmetadata', () => {
+      videoRef.currentTime = 0
+      containerRef!.style.height = `${Math.floor(videoRef.duration) * 200}px` //  para cada segundo
+    })
   })
 
   return (
@@ -67,16 +68,15 @@ export const App: Component = () => {
               ref={videoRef}
               muted
               playsinline
-              preload="auto"
+              preload="metadata"
               // @ts-expect-error: Esse atributo existe e está listado no MDN
               disablepictureinpicture
               disableremoteplayback
-              onLoadedmetadata={handleLoadedMetadata}
               class="h-full max-h-svh max-w-full object-contain"
             >
               <source
                 src="https://www.apple.com/media/us/mac-pro/2013/16C1b6b5-1d91-4fef-891e-ff2fc1c1bb58/videos/macpro_main_desktop.mp4"
-                type="video/mp4"
+                type='video/mp4; codecs="avc1.42E01E"'
               />
             </video>
           </div>
